@@ -1,14 +1,17 @@
 <div class="container">
   <div class="todos">
-    <div class="todo" *ngFor="let todo of todos; let i = index">
+    <div *ngFor="let todo of todos; let i = index" class="todo">
       <div class="id">
         <span>{{ i + 1 }}</span>
       </div>
-      <div class="title">
+      <div
+        class="title {{ todo.completed ? 'completed' : '' }}"
+        (click)="toggleTodo(i)"
+      >
         <h3>{{ todo.title }}</h3>
       </div>
       <div class="actions">
-        <button class="btn btn-danger">Delete</button>
+        <button class="btn btn-danger" (click)="deleteTodo(i)">Delete</button>
       </div>
     </div>
   </div>
