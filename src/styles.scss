@@ -1,1 +1,95 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+body {
+  background-color: #fafafa;
+}
+
+/*
+ * Base styles
+ */
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: list-item;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*
+ * Typography
+ */
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  margin-bottom: 1.6rem;
+}
+
+/*
+ * Grid
+ */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    width: 90%;
+  }
+
+  @media (min-width: 992px) {
+    width: 80%;
+  }
+
+  @media (min-width: 1200px) {
+    width: 70%;
+  }
+
+  @media (min-width: 1600px) {
+    width: 60%;
+  }
+
+  @media (min-width: 1920px) {
+    width: 50%;
+  }
+}
