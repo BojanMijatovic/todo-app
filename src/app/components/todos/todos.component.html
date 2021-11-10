@@ -1,4 +1,17 @@
 <div class="container">
+  <!-- form -->
+  <form class="form" (submit)="addTodo()">
+    <input
+      type="text"
+      name="inputTodo"
+      placeholder="enter todo"
+      class="todoInput"
+      [(ngModel)]="inputTodo"
+    />
+    <input type="submit" value="Add" class="btn btn-primary" />
+  </form>
+
+  <!-- list todos -->
   <div class="todos">
     <div *ngFor="let todo of todos; let i = index" class="todo">
       <div class="id">

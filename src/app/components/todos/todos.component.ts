@@ -8,6 +8,9 @@ import { Todo } from '../../models/Todo.model';
 })
 export class TodosComponent implements OnInit {
   public todos: Todo[] = [];
+
+  inputTodo: string = '';
+
   constructor() {}
 
   ngOnInit(): void {
@@ -39,7 +42,11 @@ export class TodosComponent implements OnInit {
     this.todos.splice(id, 1);
   }
 
-  public addTodo(todo: Todo): void {
-    this.todos.push(todo);
+  public addTodo(): void {
+    this.todos.push({
+      title: this.inputTodo,
+      completed: false,
+    });
+    this.inputTodo = '';
   }
 }
