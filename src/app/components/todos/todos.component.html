@@ -1,12 +1,11 @@
 <div class="container">
   <!-- info container -->
   <div class="info-container" *ngIf="todos.length">
-    <p>
-      <span class="info-todos-count">{{ todos.length }}</span>
-      <span class="info-todos-count-label">Todos left</span>
+    <p class="info-text">
+      You have more <span> {{ todos.length }}</span> todos left
     </p>
   </div>
-  <!-- form -->
+  <!-- form  container-->
   <div class="form-container">
     <form class="form" (submit)="addTodo()">
       <input
@@ -18,8 +17,12 @@
       />
       <input type="submit" value="Add" class="btn btn-primary" />
     </form>
-    <button class="btn" *ngIf="todos.length" (click)="removeAllTodos()">
-      remove all todos
+    <button
+      class="btn btn-remove-all"
+      *ngIf="todos.length"
+      (click)="removeAllTodos()"
+    >
+      remove all
     </button>
   </div>
   <!-- list todos -->

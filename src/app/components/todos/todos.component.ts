@@ -17,7 +17,7 @@ export class TodosComponent implements OnInit {
   }
 
   //  local storage methods
-  public saveTodos(Todo: object): void {
+  public saveTodos(object: Todo[]): void {
     localStorage.setItem('todos', JSON.stringify(this.todos));
   }
 
