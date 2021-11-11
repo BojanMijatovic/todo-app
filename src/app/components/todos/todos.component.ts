@@ -8,45 +8,51 @@ import { Todo } from '../../models/Todo.model';
 })
 export class TodosComponent implements OnInit {
   public todos: Todo[] = [];
-
-  inputTodo: string = '';
+  public inputTodo: string = '';
 
   constructor() {}
 
   ngOnInit(): void {
-    this.todos = [
-      {
-        title: 'Todo One',
-        completed: false,
-      },
-      {
-        title: 'Todo Two',
-        completed: false,
-      },
-      {
-        title: 'Todo Three',
-        completed: false,
-      },
-      {
-        title: 'Todo Four',
-        completed: true,
-      },
-    ];
+    this.getTodos();
   }
 
+  //  local storage methods
+  public saveTodos(Todo: object): void {
+    localStorage.setItem('todos', JSON.stringify(this.todos));
+  }
+
+  public getTodos(): void {
+    const todos = localStorage.getItem('todos');
+    if (todos) {
+      this.todos = JSON.parse(todos);
+    }
+  }
+
+  //  other methods
   public toggleTodo(id: number): void {
     this.todos[id].completed = !this.todos[id].completed;
+    this.saveTodos(this.todos);
   }
 
-  public deleteTodo(id: number): void {
+  public removeSingleTodo(id: number): void {
     this.todos.splice(id, 1);
+    this.saveTodos(this.todos);
   }
 
   public addTodo(): void {
-    this.todos.push({
-      title: this.inputTodo,
-      completed: false,
-    });
+    if (this.inputTodo.trim().length > 0) {
+      this.todos.push({
+        title: this.inputTodo,
+        completed: false,
+      });
+    }
+    this.saveTodos(this.todos);
     this.inputTodo = '';
+  }
+
+  public removeAllTodos(): void {
+    this.todos = [];
+    this.saveTodos(this.todos);
+    localStorage.clear();
   }
 }

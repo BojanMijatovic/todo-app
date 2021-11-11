@@ -1,16 +1,27 @@
 <div class="container">
+  <!-- info container -->
+  <div class="info-container" *ngIf="todos.length">
+    <p>
+      <span class="info-todos-count">{{ todos.length }}</span>
+      <span class="info-todos-count-label">Todos left</span>
+    </p>
+  </div>
   <!-- form -->
-  <form class="form" (submit)="addTodo()">
-    <input
-      type="text"
-      name="inputTodo"
-      placeholder="enter todo"
-      class="todoInput"
-      [(ngModel)]="inputTodo"
-    />
-    <input type="submit" value="Add" class="btn btn-primary" />
-  </form>
-
+  <div class="form-container">
+    <form class="form" (submit)="addTodo()">
+      <input
+        type="text"
+        name="inputTodo"
+        placeholder="enter todo"
+        class="todoInput"
+        [(ngModel)]="inputTodo"
+      />
+      <input type="submit" value="Add" class="btn btn-primary" />
+    </form>
+    <button class="btn" *ngIf="todos.length" (click)="removeAllTodos()">
+      remove all todos
+    </button>
+  </div>
   <!-- list todos -->
   <div class="todos">
     <div *ngFor="let todo of todos; let i = index" class="todo">
@@ -24,7 +35,9 @@
         <h3>{{ todo.title }}</h3>
       </div>
       <div class="actions">
-        <button class="btn btn-danger" (click)="deleteTodo(i)">Delete</button>
+        <button class="btn btn-danger" (click)="removeSingleTodo(i)">
+          Delete
+        </button>
       </div>
     </div>
   </div>
